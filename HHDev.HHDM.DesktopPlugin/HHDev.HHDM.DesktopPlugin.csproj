@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <ProjectGuid>{F795EA24-82C6-47B2-9C23-6F621AABF155}</ProjectGuid>
@@ -12,7 +12,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <RepoName>data-management-desktop</RepoName>
-    <BuildSettingsAdditionalFolder>net6.0-windows\win-x64</BuildSettingsAdditionalFolder>
+    <BuildSettingsAdditionalFolder>net7.0-windows\win-x64</BuildSettingsAdditionalFolder>
     <AssemblySearchPaths>
       <!--You can add additional paths here for VS to search for dependencies when building.
           Note that the order of the entries defines the priority.
@@ -20,86 +20,86 @@
           C:\Bitbucket\data-management-desktop\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\Debug\net5.0-windows;
       -->
       <!--START DATABASE SELECTOR GENERATED VALUES-->
-C:\Program Files\HH Development\HH Data Management;
+C:\data-management-desktop\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\Debug\net7.0-windows\win-x64;
 <!--END DATABASE SELECTOR GENERATED VALUES-->
 			$(AssemblySearchPaths);
 		</AssemblySearchPaths>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v22.1">
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Data.v22.1.dll</HintPath>
+    <Reference Include="DevExpress.Data.v22.2">
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Data.v22.2.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.DataAccess.v22.1">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.DataAccess.v22.1.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.DataAccess.v22.1.dll</HintPath>
+    <Reference Include="DevExpress.DataAccess.v22.2">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.DataAccess.v22.2.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.DataAccess.v22.2.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Mvvm.v22.1">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Mvvm.v22.1.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Mvvm.v22.1.dll</HintPath>
+    <Reference Include="DevExpress.Mvvm.v22.2">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Mvvm.v22.2.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Mvvm.v22.2.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Printing.v22.1.Core">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Printing.v22.1.Core.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Printing.v22.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.Printing.v22.2.Core">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Printing.v22.2.Core.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Printing.v22.2.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Charts.v22.1">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Charts.v22.1.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Charts.v22.1.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Charts.v22.2">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Charts.v22.2.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Charts.v22.2.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Controls.v22.1">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Controls.v22.1.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Controls.v22.1.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Controls.v22.2">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Controls.v22.2.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Controls.v22.2.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Core.v22.1">
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Core.v22.1.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Core.v22.2">
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Core.v22.2.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Docking.v22.1">
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Docking.v22.1.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Docking.v22.2">
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Docking.v22.2.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.DocumentViewer.v22.1.Core">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.DocumentViewer.v22.1.Core.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.DocumentViewer.v22.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.DocumentViewer.v22.2.Core">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.DocumentViewer.v22.2.Core.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.DocumentViewer.v22.2.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Grid.v22.1">
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Grid.v22.1.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Grid.v22.2">
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Grid.v22.2.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Grid.v22.1.Core">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Grid.v22.1.Core.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Grid.v22.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Grid.v22.2.Core">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Grid.v22.2.Core.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Grid.v22.2.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Grid.v22.1.Extensions">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Grid.v22.1.Extensions.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Grid.v22.1.Extensions.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Grid.v22.2.Extensions">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Grid.v22.2.Extensions.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Grid.v22.2.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Layout.v22.1.Core">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Layout.v22.1.Core.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Layout.v22.1.Core.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Layout.v22.2.Core">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Layout.v22.2.Core.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Layout.v22.2.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.LayoutControl.v22.1">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.LayoutControl.v22.1.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.LayoutControl.v22.1.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.LayoutControl.v22.2">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.LayoutControl.v22.2.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.LayoutControl.v22.2.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Printing.v22.1">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Printing.v22.1.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Printing.v22.1.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Printing.v22.2">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Printing.v22.2.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Printing.v22.2.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpf.Ribbon.v22.1">
-      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Ribbon.v22.1.dll</HintPath>
-      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Ribbon.v22.1.dll</HintPath>
+    <Reference Include="DevExpress.Xpf.Ribbon.v22.2">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\DevExpress.Xpf.Ribbon.v22.2.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Xpf.Ribbon.v22.2.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="NodaTime">
@@ -208,6 +208,6 @@ C:\Program Files\HH Development\HH Data Management;
     </PackageReference>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;C:\Users\apuyt\Documents\HH Development\HH Data Management\DataBase &amp; Plugins\Staging_8083_AdminUser\Plugins\Plugin&quot; mkdir &quot;C:\Users\apuyt\Documents\HH Development\HH Data Management\DataBase &amp; Plugins\Staging_8083_AdminUser\Plugins\Plugin&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;C:\Users\apuyt\Documents\HH Development\HH Data Management\DataBase &amp; Plugins\Staging_8083_AdminUser\Plugins\Plugin&quot; /Y /S" />
+    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;C:\Users\Carlos\Documents\HH Development\HH Data Management\Databases\Staging_8079_HHDevPlugin\Plugins\Plugin&quot; mkdir &quot;C:\Users\Carlos\Documents\HH Development\HH Data Management\Databases\Staging_8079_HHDevPlugin\Plugins\Plugin&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;C:\Users\Carlos\Documents\HH Development\HH Data Management\Databases\Staging_8079_HHDevPlugin\Plugins\Plugin&quot; /Y /S" />
   </Target>
 </Project>
