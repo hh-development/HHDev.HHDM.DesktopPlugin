@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="HHDev.HHDM.DesktopPlugin.RunSheet.Tab.FuelTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:local="clr-namespace:HHDev.HHDM.DesktopPlugin.RunSheet.Tab" xmlns:controls="clr-namespace:HHDev.DataManagement.Client.Wpf.Controls;assembly=HHDev.DataManagement.Client.Wpf" xmlns:wpf="clr-namespace:HHDev.Core.WPF;assembly=HHDev.Core.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/HHDev.DataManagement.Client.Wpf;component/Controls/HHCustomGridDisplay/Primitives/Controls/PrimitiveDisplayStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel>
+        <Grid>
+            <Image Style="{StaticResource IconTitle}" Source="{dx:SvgImageSource Uri='pack://application:,,,/HHDev.DataManagement.Client.Wpf;component/Resources/Icons/svg/gas-station.svg'}"></Image>
+            <Label Content="Fuel Management" Style="{StaticResource TitleStyle}"/>
+        </Grid>
+        <Grid Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel  x:Name="Fuel_section" Grid.Column="0">
+
+                <StackPanel Orientation="Horizontal" Margin="5,2,0,0">
+                    <Label Content="Fuel Added (SOR)" HorizontalContentAlignment="Left" Width="110"/>
+                    <controls:HHTextBox Margin="5,2,0,0"  Width="50"                                                                          
+                                        Text="{wpf:NumericDisplayBinding RunSheetFlatModel.Doubles.FuelAdded, Mode=TwoWay, StringFormat={}{0:0.00}, Converter={StaticResource HHDoubleModifierConverter},ConverterParameter='NoConversion' }"                                        
+                                        HorizontalAlignment="Stretch" 
+                                        VerticalAlignment="Stretch"
+                                        HorizontalContentAlignment="Right"/>
+                    <dx:SimpleButton Width="90" Height="24" Content="Full Tank" BorderThickness="0" Margin="5,0,0,0"
+                                         Command="{Binding FullTankCommand}"
+                                         Glyph="{dx:SvgImageSource Uri='pack://application:,,,/HHDev.DataManagement.Client.Wpf;component/Resources/Icons/svg/gas-station.svg'}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="5,2,0,0">
+                    <Label Content="Fuel Removed (EOR)" HorizontalContentAlignment="Left" Width="110"/>
+                    <controls:HHTextBox Margin="5,2,0,0"  Width="50"                                                                          
+                                        Text="{wpf:NumericDisplayBinding RunSheetFlatModel.FuelRemovedDataBound, Mode=TwoWay, StringFormat={}{0:0.00}, Converter={StaticResource HHDoubleModifierConverter},ConverterParameter='NoConversion' }"                                        
+                                        HorizontalContentAlignment="Right"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="5,2,0,0">
+                    <Label Content="Fuel Cons. by Lap" HorizontalContentAlignment="Left" Width="110"/>
+                    <controls:HHTextBox Margin="5,2,0,0"  Width="50"                                                                          
+                                        Text="{wpf:NumericDisplayBinding RunSheetFlatModel.FuelConsRunDataBound, Mode=TwoWay, StringFormat={}{0:0.00}, Converter={StaticResource HHDoubleModifierConverter},ConverterParameter='NoConversion' }"                                        
+                                        HorizontalContentAlignment="Right"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel  Grid.Column="1" Margin="10,0,0,0">
+
+                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                    <Label Content="Full Pump Out?" HorizontalContentAlignment="Left" Width="110"/>
+                    <CheckBox IsChecked="{Binding RunSheetFlatModel.IsPumpOutDataBound, Mode=TwoWay}" Margin="5,2,0,0"  BorderThickness="1" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                    <Label Content="Data Total Fuel Cons." HorizontalContentAlignment="Left" Width="110"/>
+                    <controls:HHTextBox Margin="5,2,0,0"  Width="50"                                                                         
+                                        Text="{wpf:NumericDisplayBinding RunSheetFlatModel.DataFuelDataBound, Mode=TwoWay, StringFormat={}{0:0.00}, Converter={StaticResource HHDoubleModifierConverter},ConverterParameter='NoConversion' }"                                        
+                                        HorizontalContentAlignment="Right"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                    <Label Content="Fuel Error" HorizontalContentAlignment="Left" Width="110"/>
+                    <controls:HHTextBox Margin="5,2,0,0"  Width="50"  IsEnabled="False"                                                                        
+                                        Text="{wpf:NumericDisplayBinding RunSheetFlatModel.FuelError, Mode=TwoWay, StringFormat={}{0:0.00}, Converter={StaticResource HHDoubleModifierConverter},ConverterParameter='NoConversion' }"                                        
+                                        HorizontalContentAlignment="Right"/>
+                    <Label Content="%" HorizontalContentAlignment="Left" Width="20" Margin="5,0"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <!-- Tyre management -->
+        </Grid>
+    </StackPanel>
+</UserControl>

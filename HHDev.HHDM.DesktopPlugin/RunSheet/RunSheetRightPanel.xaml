@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="HHDev.HHDM.DesktopPlugin.RunSheet.RunSheetRightPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HHDev.HHDM.DesktopPlugin.RunSheet" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:runsheetTabs="clr-namespace:HHDev.HHDM.DesktopPlugin.RunSheet.Tab" xmlns:hhcolumnitemdisplay="clr-namespace:HHDev.DataManagement.Client.Wpf.Controls.HHColumnItemDisplay;assembly=HHDev.DataManagement.Client.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <DataTemplate x:Key="FuelTab">
+            <runsheetTabs:FuelTab/>
+        </DataTemplate>
+        <DataTemplate x:Key="TyreTab">
+            <runsheetTabs:TyreTab/>
+        </DataTemplate>
+    </UserControl.Resources>
+    <StackPanel>
+        <dx:DXTabControl Padding="5" MinWidth="520">
+            <dx:DXTabItem Header="Fuel" Foreground="White">
+                <ContentControl Content="{Binding}" Width="Auto">
+                    <ContentControl.Style>
+                        <Style TargetType="{x:Type ContentControl}">
+                            <Setter Property="ContentTemplate" Value="{StaticResource FuelTab}"/>
+                        </Style>
+                    </ContentControl.Style>
+                </ContentControl>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="Tyre" Foreground="White">
+                <ContentControl Content="{Binding}" Width="Auto">
+                    <ContentControl.Style>
+                        <Style TargetType="{x:Type ContentControl}">
+                            <Setter Property="ContentTemplate" Value="{StaticResource TyreTab}"/>
+                        </Style>
+                    </ContentControl.Style>
+                </ContentControl>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+    </StackPanel>
+</UserControl>
