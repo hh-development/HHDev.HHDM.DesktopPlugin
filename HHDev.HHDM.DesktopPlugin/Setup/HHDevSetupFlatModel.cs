@@ -22,7 +22,13 @@ namespace HHDev.HHDM.DesktopPlugin.Setup
             this.Maths.PropertyChanged += Maths_PropertyChanged;
             InitializeSimulationValues();
         }
-        private void InitializeSimulationValues()
+
+        public List<string> _parametersToUpdateSimulation = new List<string>()
+            {
+                "CamberFL",
+                "CamberFR"
+            };
+    private void InitializeSimulationValues()
         {
 
 
@@ -41,6 +47,11 @@ namespace HHDev.HHDM.DesktopPlugin.Setup
             {
                 //call function : Important to add null checks
             }
+            if (!_parametersToUpdateSimulation.Contains(e.PropertyName))
+            {
+                return;
+            }
+            InitializeSimulationValues();//call it your simulation calculation
         }
 
         private void HHDevRunSheetFlatModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) // call when one parameter from the setup definition has changed (parameter or part parameter)
