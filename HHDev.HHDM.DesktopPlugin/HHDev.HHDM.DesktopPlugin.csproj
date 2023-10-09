@@ -208,6 +208,6 @@ C:\Program Files\HH Development\HH Data Management;
     </PackageReference>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;C:\Users\manu\Documents\HH Development\HH Data Management\DataBase &amp; Plugins\Staging_8085_AdminUser\Plugins\Plugin&quot; mkdir &quot;C:\Users\manu\Documents\HH Development\HH Data Management\DataBase &amp; Plugins\Staging_8085_AdminUser\Plugins\Plugin&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;C:\Users\manu\Documents\HH Development\HH Data Management\DataBase &amp; Plugins\Staging_8085_AdminUser\Plugins\Plugin&quot; /Y /S" />
+    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;%userprofile%\Documents\HH Development\HH Data Management\Plugins\Plugin&quot; mkdir &quot;%userprofile%\Documents\HH Development\HH Data Management\Plugins\Plugin&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;%userprofile%\Documents\HH Development\HH Data Management\Plugins\Plugin&quot; /Y /S" />
   </Target>
 </Project>

@@ -15,6 +15,7 @@ using HHDev.DataManagement.Client.Wpf.Components.TabControl;
 using HHDev.DataManagement.Client.Wpf.Helpers;
 using HHDev.HHDM.DesktopPlugin.EventCarData;
 using HHDev.HHDM.DesktopPlugin.Setup.SetupGraph;
+using HHDev.DataManagement.Client.Core.PluginFramework.Interfaces;
 
 namespace AndrettiFE.HHDM.DesktopPlugin
 {
