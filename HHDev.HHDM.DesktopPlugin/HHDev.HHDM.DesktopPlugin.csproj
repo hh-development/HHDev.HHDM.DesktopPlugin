@@ -217,6 +217,11 @@ C:\Program Files\HH Development\HH Data Management;
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Update="PluginInfo.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;%userprofile%\Documents\HH Development\HH Data Management\Plugins\Plugin&quot; mkdir &quot;%userprofile%\Documents\HH Development\HH Data Management\Plugins\Plugin&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;%userprofile%\Documents\HH Development\HH Data Management\Plugins\Plugin&quot; /Y /S" />
   </Target>
