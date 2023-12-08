@@ -14,10 +14,12 @@ namespace HHDev.HHDM.DesktopPlugin.Setup
     {
         public HHDevSetupFlatModel(SetupFlatModelInitializationObject initializationObject, TypeWrapperInitializationContainerWithParts typeWrapperInitializationContainer) : base(initializationObject, typeWrapperInitializationContainer)
         {
-            base.RegisterParameterAndFunction( // HH DM function with null checks. UpdateRakeCalculation will be called when one of the input parameters changed and if all are non-null
+            var flatModelMathFunctionCaller = new FlatModelMathFunctionCaller(this);
+            flatModelMathFunctionCaller.RegisterParameterAndFunction( // HH DM function with null checks. UpdateRakeCalculation will be called when one of the input parameters changed and if all are non-null
                 new string[] { "RideHeightFL", "RideHeightFR", "RideHeightRL", "RideHeightRR", "Chassis" },//input parameters
                 UpdateRakeCalculation, //Function called
                 new string[] { nameof(RakeAngle) });// parameter updated
+
             this.PropertyChanged += HHDevRunSheetFlatModel_PropertyChanged;
             this.Maths.PropertyChanged += Maths_PropertyChanged;
             InitializeSimulationValues();

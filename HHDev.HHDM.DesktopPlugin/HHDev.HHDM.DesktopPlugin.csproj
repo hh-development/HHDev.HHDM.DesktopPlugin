@@ -172,6 +172,11 @@ C:\Program Files\HH Development\HH Data Management;
       <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\HHDev.Sync.Client.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="OxyPlot.Wpf.Shared">
+      <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\OxyPlot.Wpf.Shared.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\OxyPlot.Wpf.Shared.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="OxyPlot.Wpf">
       <HintPath Condition="Exists('C:\Program Files (x86)\HH Development\HH Data Management')">C:\Program Files (x86)\HH Development\HH Data Management\OxyPlot.Wpf.dll</HintPath>
       <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\OxyPlot.Wpf.dll</HintPath>

@@ -340,7 +340,9 @@ namespace HHDev.HHDM.DesktopPlugin.Setup.SetupGraph
             };
             if (trackPoint)
             {
+#pragma warning disable 00618
                 plotModel.TrackerChanged += PlotModel_TrackerChanged;
+#pragma warning restore 00618
             }
             return plotModel;
         }
