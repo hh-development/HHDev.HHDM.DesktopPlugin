@@ -26,8 +26,8 @@
                                             ColumnItemDefinition="{Binding CIDViewModelManager.ColumnItemDefinitionModel}" 
                                             ControlDefinition="{Binding CIDViewModelManager.ControlDefinition}"
                                             ColumnItems="{Binding CIDViewModelManager.EditViewModels, UpdateSourceTrigger=PropertyChanged}"
-                                            AutoGenerateColourBindingsForChanges="True"
-                                            SelectedView="{Binding CIDViewModelManager.SelectedView, Mode=TwoWay}"/>
+                                            SelectedView="{Binding CIDViewModelManager.SelectedView, Mode=TwoWay}"
+                                            ErrorMessage="{Binding CIDViewModelManager.ErrorMessage}"/>
             </DockPanel>
             <GridSplitter Grid.Row="0" Grid.Column="1"
                   Width="3"

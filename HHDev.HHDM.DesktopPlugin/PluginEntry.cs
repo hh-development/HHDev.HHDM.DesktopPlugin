@@ -99,13 +99,13 @@ namespace AndrettiFE.HHDM.DesktopPlugin
 
         private void BuildMainRibbonTab() // add a tab in the ribbon bar and then some button in the new tab
         {
-            var newTab = new HHDMRibbonPageModel("Plugin Tabs", false, false);
+            var newTab = new HHDMRibbonPageModel("Plugin Tabs");
             RibbonPages.Add(newTab);
 
 
             var pluginSetupGraphs = new RibbonPageGroupModel("Setup Graphs");
             newTab.Groups.Add(pluginSetupGraphs);
-            pluginSetupGraphs.Children.Add(new OpenViewRibbonButtonModel("Setup Graphs", "info", typeof(SimulationResultsView)));
+            pluginSetupGraphs.Children.Add(new OpenViewRibbonButtonModel("Setup Graphs", "info", typeof(SimulationResultsView), null));
         }
 
         #endregion
