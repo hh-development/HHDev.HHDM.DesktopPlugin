@@ -17,7 +17,7 @@ using HHDev.HHDM.DesktopPlugin.EventCarData;
 using HHDev.HHDM.DesktopPlugin.Setup.SetupGraph;
 using HHDev.DataManagement.Client.Core.PluginFramework.Interfaces;
 
-namespace AndrettiFE.HHDM.DesktopPlugin
+namespace HHDev.HHDM.DesktopPlugin
 {
     public class PluginEntry :
         IHhDataManagementPlugin,
@@ -87,12 +87,14 @@ namespace AndrettiFE.HHDM.DesktopPlugin
         public List<ViewModelMapping> ViewModelAndViewMappings { get; } = new List<ViewModelMapping>()
         {
             new ViewModelMapping(typeof(SimulationResultsViewModel), typeof(SimulationResultsView)),
+            new ViewModelMapping(typeof(PluginRunSheetViewModel), typeof(RunSheetsView)),
         };
 
         public List<Type> TypesForRegistration { get; } = new List<Type>()
         {
              typeof(SimulationResultsViewModel),
-            typeof(SimulationResultsView)
+            typeof(SimulationResultsView),
+            typeof(PluginRunSheetViewModel)
         };
         public List<HHRibbonTab> PluginRibbonTabs { get; } = new List<HHRibbonTab>();
         public List<RibbonPageModel> RibbonPages { get; } = new List<RibbonPageModel>();
