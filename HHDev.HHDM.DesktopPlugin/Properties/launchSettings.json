@@ -2,7 +2,7 @@
   "profiles": {
     "HHDev.HHDM.DesktopPlugin": {
       "commandName": "Executable",
-      "executablePath": "C:\\DM Portable\\HHDev.DataManagement.Client.HHDataManagement_Portable_v23.2.20.53_x64\\HHDev.DataManagement.Client.HHDataManagement.exe"
+      "executablePath": "C:\\DM Portable\\HHDev.DataManagement.Client.HHDataManagement_Portable_v24.0.1.0_x64\\HHDev.DataManagement.Client.HHDataManagement.exe"
     }
   }
 }

@@ -17,7 +17,7 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
 {
     public static class RunSheetDefinitionBuilder
     {
-        public static CustomGridDefinition GetLayoutDefinition()
+        public static Func<RunSheetLayoutDefinitionParameters, CustomGridDefinition> GetLayoutDefinition() => parameters =>
         {
             var runSheetTopBar = new PrimitiveControlReference("CFF1D8A9-2A75-4639-9A74-0456DBF0B773", "SelectedRunSheetModel")
             {
@@ -246,7 +246,7 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
             {
                 Orientation = eOrientation.Horizontal
             };
-            var isSetupInTab = true;// ContextSelection.SelectedManagementCache.AccountOptions.Booleans.GetPropertyValue("RunSheetSetupInTab");
+            var isSetupInTab = parameters.IsSetupInTab;
 
             if (isSetupInTab)
             {
@@ -293,7 +293,7 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
                 })
                 ,
                 "SelectedRunSheetModel.RunSheetFlatModel");
-        }
+        };
         public static List<PrimitiveDefinition> GetPrimitiveDefinitions()
         {
             return new List<PrimitiveDefinition>()
