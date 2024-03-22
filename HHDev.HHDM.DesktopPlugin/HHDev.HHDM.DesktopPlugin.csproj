@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
@@ -20,8 +20,7 @@
           C:\Bitbucket\data-management-desktop\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\Debug\net5.0-windows;
       -->
       <!--START DATABASE SELECTOR GENERATED VALUES-->
-C:\DM Portable\HHDev.DataManagement.Client.HHDataManagement_Portable_v24.0.1.0_x64;
-<!--END DATABASE SELECTOR GENERATED VALUES-->
+	  <!--END DATABASE SELECTOR GENERATED VALUES-->
 			$(AssemblySearchPaths);
 		</AssemblySearchPaths>
   </PropertyGroup>
@@ -223,6 +222,6 @@ C:\DM Portable\HHDev.DataManagement.Client.HHDataManagement_Portable_v24.0.1.0_x
     </None>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;C:\Users\manu\Documents\HH Development\HH Data Management\DataBase &amp; Plugins\Staging_8079_Alban\Plugins\Plugin&quot; mkdir &quot;C:\Users\manu\Documents\HH Development\HH Data Management\DataBase &amp; Plugins\Staging_8079_Alban\Plugins\Plugin&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;C:\Users\manu\Documents\HH Development\HH Data Management\DataBase &amp; Plugins\Staging_8079_Alban\Plugins\Plugin&quot; /Y /S" />
+    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;C:\Users\YOUR USERNAME\AppData\Local\HH Development\HH Data Management\Plugins\PluginDev&quot; mkdir &quot;C:\Users\YOUR USERNAME\AppData\Local\HH Development\HH Data Management\Plugins\PluginDev&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;C:\Users\YOUR USERNAME\AppData\Local\HH Development\HH Data Management\Plugins\PluginDev&quot; /Y /S" />
   </Target>
 </Project>
