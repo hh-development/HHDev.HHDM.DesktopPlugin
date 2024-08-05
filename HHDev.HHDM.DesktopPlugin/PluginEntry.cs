@@ -16,6 +16,7 @@ using HHDev.DataManagement.Client.Wpf.Helpers;
 using HHDev.HHDM.DesktopPlugin.EventCarData;
 using HHDev.HHDM.DesktopPlugin.Setup.SetupGraph;
 using HHDev.DataManagement.Client.Core.PluginFramework.Interfaces;
+using HHDev.HHDM.DesktopPlugin.FilterableView;
 
 namespace HHDev.HHDM.DesktopPlugin
 {
@@ -88,26 +89,30 @@ namespace HHDev.HHDM.DesktopPlugin
         {
             new ViewModelMapping(typeof(SimulationResultsViewModel), typeof(SimulationResultsView)),
             new ViewModelMapping(typeof(PluginRunSheetViewModel), typeof(RunSheetsView)),
+            new ViewModelMapping(typeof(ExampleFilterableViewModel), typeof(ExampleFilterableView)),
         };
 
         public List<Type> TypesForRegistration { get; } = new List<Type>()
         {
-             typeof(SimulationResultsViewModel),
+            typeof(SimulationResultsViewModel),
             typeof(SimulationResultsView),
-            typeof(PluginRunSheetViewModel)
+            typeof(PluginRunSheetViewModel),
+            typeof(ExampleFilterableViewModel),
+            typeof(ExampleFilterableView),
         };
         public List<HHRibbonTab> PluginRibbonTabs { get; } = new List<HHRibbonTab>();
         public List<RibbonPageModel> RibbonPages { get; } = new List<RibbonPageModel>();
 
         private void BuildMainRibbonTab() // add a tab in the ribbon bar and then some button in the new tab
         {
-            var newTab = new HHDMRibbonPageModel("Plugin Tabs");
-            RibbonPages.Add(newTab);
+            var tab = new HHDMRibbonPageModel("Plugin Tabs");
+            RibbonPages.Add(tab);
 
 
-            var pluginSetupGraphs = new RibbonPageGroupModel("Setup Graphs");
-            newTab.Groups.Add(pluginSetupGraphs);
-            pluginSetupGraphs.Children.Add(new OpenViewRibbonButtonModel("Setup Graphs", "info", typeof(SimulationResultsView), null));
+            var group = new RibbonPageGroupModel("Setups");
+            tab.Groups.Add(group);
+            group.Children.Add(new OpenViewRibbonButtonModel("Setup Graphs", "info", typeof(SimulationResultsView), null));
+            group.Children.Add(new OpenViewRibbonButtonModel("Setup History", "setup-comparison", typeof(ExampleFilterableView), null));
         }
 
         #endregion
