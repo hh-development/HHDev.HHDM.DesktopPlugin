@@ -17,6 +17,7 @@ using HHDev.HHDM.DesktopPlugin.EventCarData;
 using HHDev.HHDM.DesktopPlugin.Setup.SetupGraph;
 using HHDev.DataManagement.Client.Core.PluginFramework.Interfaces;
 using HHDev.HHDM.DesktopPlugin.FilterableView;
+using HHDev.HHDM.DesktopPlugin.ContextSelectionView;
 
 namespace HHDev.HHDM.DesktopPlugin
 {
@@ -90,6 +91,7 @@ namespace HHDev.HHDM.DesktopPlugin
             new ViewModelMapping(typeof(SimulationResultsViewModel), typeof(SimulationResultsView)),
             new ViewModelMapping(typeof(PluginRunSheetViewModel), typeof(RunSheetsView)),
             new ViewModelMapping(typeof(ExampleFilterableViewModel), typeof(ExampleFilterableView)),
+            new ViewModelMapping(typeof(ExampleContextSelectionViewModel), typeof(ExampleContextSelectionView)),
         };
 
         public List<Type> TypesForRegistration { get; } = new List<Type>()
@@ -99,6 +101,8 @@ namespace HHDev.HHDM.DesktopPlugin
             typeof(PluginRunSheetViewModel),
             typeof(ExampleFilterableViewModel),
             typeof(ExampleFilterableView),
+            typeof(ExampleContextSelectionViewModel),
+            typeof(ExampleContextSelectionView),
         };
         public List<HHRibbonTab> PluginRibbonTabs { get; } = new List<HHRibbonTab>();
         public List<RibbonPageModel> RibbonPages { get; } = new List<RibbonPageModel>();
@@ -113,6 +117,10 @@ namespace HHDev.HHDM.DesktopPlugin
             tab.Groups.Add(group);
             group.Children.Add(new OpenViewRibbonButtonModel("Setup Graphs", "info", typeof(SimulationResultsView), null));
             group.Children.Add(new OpenViewRibbonButtonModel("Setup History", "setup-comparison", typeof(ExampleFilterableView), null));
+
+            var csgroup = new RibbonPageGroupModel("Context");
+            tab.Groups.Add(csgroup);
+            csgroup.Children.Add(new OpenViewRibbonButtonModel("Context Selection", "stopwatch", typeof(ExampleContextSelectionView), null));
         }
 
         #endregion
