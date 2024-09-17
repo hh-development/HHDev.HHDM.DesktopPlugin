@@ -1,30 +1,52 @@
-﻿using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay;
-using HHDev.DataManagement.Client.Core;
+﻿using HHDev.Core.NETStandard.Definitions;
+using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay;
+using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay.GridLayout;
+using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay.Properties;
+using HHDev.DataManagement.Client.Wpf.Controls;
+using HHDev.DataManagement.Client.Wpf.Helpers;
 using HHDev.DataManagement.Client.Wpf.PluginFramework.CustomizationConfigs;
+using HHDev.DataManagement.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay.Definitions;
-using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay.GridLayout;
-using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay.Properties;
-using HHDev.DataManagement.Client.Core.Caches;
-using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay.CellDefinitions;
-using HHDev.DataManagement.Client.Wpf.Controls;
+using System.Windows;
 
 namespace HHDev.HHDM.DesktopPlugin.RunSheet
 {
     public static class RunSheetDefinitionBuilder
     {
+        private static StyleOptions GetTabItemStyleOptions()
+        {
+            var options = new StyleOptions
+            {
+                FontSize =
+                {
+                    StyleOptionsItemMode = eStyleOptionsItemMode.Constant,
+                    ConstantTyped = 12
+                },
+                FontWeight =
+                {
+                    StyleOptionsItemMode = eStyleOptionsItemMode.Constant,
+                    ConstantTyped = FontWeights.SemiBold.ToString()
+                },
+                ForegroundColour =
+                {
+                    StyleOptionsItemMode = eStyleOptionsItemMode.Constant,
+                    ConstantTyped = ThemeHelpers.GetThemeColor("Foreground").ToString()
+                }
+            };
+
+            return options;
+        }
+
         public static Func<RunSheetLayoutDefinitionParameters, CustomGridDefinition> GetLayoutDefinition() => parameters =>
         {
-            var runSheetTopBar = new PrimitiveControlReference("CFF1D8A9-2A75-4639-9A74-0456DBF0B773", "SelectedRunSheetModel")
+            var runSheetTopBar = new PrimitiveControlReferenceDefinition("CFF1D8A9-2A75-4639-9A74-0456DBF0B773", "SelectedRunSheetModel")
             {
                 HorizontalAlignment = eHorizontalAlignment.Stretch,
             };
 
-            var lapTable = new PrimitiveControlReference("E929E560-36E6-449A-BA5A-89643F6C7DF9", "SelectedRunSheetModel")
+            var lapTable = new PrimitiveControlReferenceDefinition("E929E560-36E6-449A-BA5A-89643F6C7DF9", "SelectedRunSheetModel")
             {
                 HorizontalAlignment = eHorizontalAlignment.Stretch,
                 Margin = new HHThickness(0, 5, 0, 0),
@@ -33,56 +55,56 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
             };
 
 
-            var engineerNotesTab = new TabItemDefinition()
+            var engineerNotesTab = new TabItemLayoutItem()
             {
                 Title = "Engineer Notes",
-                Content = new PrimitiveControlReference("658BECE5-B7CA-41E4-BA98-932C2F4DCD6E", "SelectedRunSheetModel"),
-                HeaderFontSize = 12,
+                Content = new PrimitiveControlReferenceDefinition("658BECE5-B7CA-41E4-BA98-932C2F4DCD6E", "SelectedRunSheetModel"),
+                StyleOptions = GetTabItemStyleOptions(),
             };
 
-            var issueListTab = new TabItemDefinition()
+            var issueListTab = new TabItemLayoutItem()
             {
                 Title = "Issue List",
                 // IssueList
-                Content = new PrimitiveControlReference("99F7D297-24B2-42CD-8318-730E437891A0"),
-                HeaderFontSize = 12,
+                Content = new PrimitiveControlReferenceDefinition("99F7D297-24B2-42CD-8318-730E437891A0"),
+                StyleOptions = GetTabItemStyleOptions(),
             };
-            var driverCommentTabControl = new TabControlDefinition()
+            var driverCommentTabControl = new TabControlLayoutItem()
             {
                 HorizontalAlignment = eHorizontalAlignment.Stretch,
                 Margin = new HHThickness(0, 0, 2, 0)
             };
-            var engineerCommentTabControl = new TabControlDefinition()
+            var engineerCommentTabControl = new TabControlLayoutItem()
             {
                 HorizontalAlignment = eHorizontalAlignment.Stretch,
                 Margin = new HHThickness(2, 0, 2, 0)
             };
-            driverCommentTabControl.TabItems.Add(new TabItemDefinition()
+            driverCommentTabControl.TabItems.Add(new TabItemLayoutItem()
             {
                 Title = "Driver Comments",
-                Content = new TextAreaDefinition()
+                Content = new TextAreaControlDefinition()
                 {
                     IsTitleVisible = false,
                     TextBindingPath = "SelectedRunSheetModel.RunSheetFlatModel.Strings.DriverComments",
                     VerticalAlignment = eVerticalAlignment.Stretch,
                     Margin = new HHThickness(0, 0, 0, 0)
                 },
-                HeaderFontSize = 12,
+                StyleOptions = GetTabItemStyleOptions(),
             });
-            engineerCommentTabControl.TabItems.Add(new TabItemDefinition()
+            engineerCommentTabControl.TabItems.Add(new TabItemLayoutItem()
             {
                 Title = "Engineer Comments",
-                Content = new TextAreaDefinition()
+                Content = new TextAreaControlDefinition()
                 {
                     IsTitleVisible = false,
                     TextBindingPath = "SelectedRunSheetModel.RunSheetFlatModel.Strings.EngineerComments",
                     VerticalAlignment = eVerticalAlignment.Stretch,
                     Margin = new HHThickness(0, 0, 0, 0)
                 },
-                HeaderFontSize = 12,
+                StyleOptions = GetTabItemStyleOptions(),
             });
 
-            var engineerNotesIssueListTabControl = new TabControlDefinition()
+            var engineerNotesIssueListTabControl = new TabControlLayoutItem()
             {
                 HorizontalAlignment = eHorizontalAlignment.Stretch,
                 Margin = new HHThickness(2, 0, 0, 0)
@@ -90,25 +112,25 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
             engineerNotesIssueListTabControl.TabItems.Add(engineerNotesTab);
             engineerNotesIssueListTabControl.TabItems.Add(issueListTab);
 
-            var commentsRows = new GridLayoutDefinition(
-                          new List<RowDefinition>()
+            var commentsRows = new GridLayoutItem(
+                          new List<HHRowDefinition>()
                           {
-                              new RowDefinition(1, GridLength.GridUnitType.Star),
+                              new HHRowDefinition(1, eGridUnitType.Star),
                           },
-                          new List<ColumnDefinition>()
+                          new List<HHColumnDefinition>()
                           {
-                              new ColumnDefinition(1, GridLength.GridUnitType.Star),
-                              new ColumnDefinition(1, GridLength.GridUnitType.Star),
-                              new ColumnDefinition(1, GridLength.GridUnitType.Star)
+                              new HHColumnDefinition(1, eGridUnitType.Star),
+                              new HHColumnDefinition(1, eGridUnitType.Star),
+                              new HHColumnDefinition(1, eGridUnitType.Star)
                           },
-                          new List<GridLayoutItemDefinition>() { 
+                          new List<GridItemDefinition>() { 
 
                 // First row of comments
-                new GridLayoutItemDefinition(0, 0,
+                new GridItemDefinition(0, 0,
                      driverCommentTabControl),
-                new GridLayoutItemDefinition(0, 1,
+                new GridItemDefinition(0, 1,
                      engineerCommentTabControl),
-                 new GridLayoutItemDefinition(0, 2,
+                 new GridItemDefinition(0, 2,
                      engineerNotesIssueListTabControl),
                      })
             {
@@ -116,36 +138,36 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
                 Margin = new HHThickness(0, 2, 0, 0)
             };
 
-            var mainTabContent = new ScrollViewerLayoutDefinition()
+            var mainTabContent = new ScrollViewerLayoutItem()
             {
                 HorizontalScrollBarVisibility = eScrollBarVisibility.Disabled,
                 VerticalScrollBarVisibility = eScrollBarVisibility.Auto,
-                LayoutDefinition = new GridLayoutDefinition(new List<RowDefinition>()
+                Content = new GridLayoutItem(new List<HHRowDefinition>()
                                                             {
-                                                                new RowDefinition(GridLength.GridUnitType.Auto),
-                                                                new RowDefinition(GridLength.GridUnitType.Auto),
-                                                                new RowDefinition(GridLength.GridUnitType.Auto),
-                                                                new RowDefinition(GridLength.GridUnitType.Auto),
+                                                                new HHRowDefinition(eGridUnitType.Auto),
+                                                                new HHRowDefinition(eGridUnitType.Auto),
+                                                                new HHRowDefinition(eGridUnitType.Auto),
+                                                                new HHRowDefinition(eGridUnitType.Auto),
                                                             },
-                                                            new List<ColumnDefinition>()
+                                                            new List<HHColumnDefinition>()
                                                             {
-                                                                new ColumnDefinition(GridLength.GridUnitType.Star)
+                                                                new HHColumnDefinition(eGridUnitType.Star)
                                                             },
-                                                            new List<GridLayoutItemDefinition>()
+                                                            new List<GridItemDefinition>()
                                                             {
                                                                 // FuelManagement
-                                                                new GridLayoutItemDefinition(0, 0, new PrimitiveControlReference("1A7FE1DB-6ED8-4125-AF0A-2A48927B1B40")
+                                                                new GridItemDefinition(0, 0, new PrimitiveControlReferenceDefinition("1A7FE1DB-6ED8-4125-AF0A-2A48927B1B40")
                                                                 {
                                                                     HorizontalAlignment = eHorizontalAlignment.Stretch
                                                                 }),
                                                                 // TyrePressures
-                                                                new GridLayoutItemDefinition(1, 0, new PrimitiveControlReference("9319C439-5E55-4EA2-B69B-141B9AF567FE")
+                                                                new GridItemDefinition(1, 0, new PrimitiveControlReferenceDefinition("9319C439-5E55-4EA2-B69B-141B9AF567FE")
                                                                 {
                                                                     HorizontalAlignment = eHorizontalAlignment.Stretch,
                                                                     Margin = new HHThickness(0,10,0,0)
                                                                 }),
                                                                 // Temp
-                                                                new GridLayoutItemDefinition(2, 0, new PrimitiveControlReference("C9DF9D5D-0155-4383-A1BE-02494E5CA405")
+                                                                new GridItemDefinition(2, 0, new PrimitiveControlReferenceDefinition("C9DF9D5D-0155-4383-A1BE-02494E5CA405")
                                                                 {
                                                                     HorizontalAlignment = eHorizontalAlignment.Stretch,
                                                                     Margin = new HHThickness(0,10,0,0)
@@ -157,38 +179,38 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
                 }
             };
 
-            var runsheetRightPanelTabControl = new TabControlDefinition();
+            var runsheetRightPanelTabControl = new TabControlLayoutItem();
 
-            var mainTab = new TabItemDefinition()
+            var mainTab = new TabItemLayoutItem()
             {
                 Title = "Main",
                 Content = mainTabContent,
-                HeaderFontSize = 12
+                StyleOptions = GetTabItemStyleOptions(),
             };
-            var cidTab = new TabItemDefinition()
+            var cidTab = new TabItemLayoutItem()
             {
                 Title = "CID",
-                Content = new PrimitiveControlReference("986C5E46-E58C-49B1-80D4-F1AE71C94CF9") { VerticalAlignment = eVerticalAlignment.Top, HorizontalAlignment = eHorizontalAlignment.Left },
-                HeaderFontSize = 12
+                Content = new PrimitiveControlReferenceDefinition("986C5E46-E58C-49B1-80D4-F1AE71C94CF9") { VerticalAlignment = eVerticalAlignment.Top, HorizontalAlignment = eHorizontalAlignment.Left },
+                StyleOptions = GetTabItemStyleOptions(),
             };
-            var trackMapTab = new TabItemDefinition()
+            var trackMapTab = new TabItemLayoutItem()
             {
                 Title = "Track Map",
-                Content = new PrimitiveControlReference("C485A5B3-5A79-45B6-B0D9-2130EF885C42", "SelectedRunSheetModel"),
-                HeaderFontSize = 12
+                Content = new PrimitiveControlReferenceDefinition("C485A5B3-5A79-45B6-B0D9-2130EF885C42", "SelectedRunSheetModel"),
+                StyleOptions = GetTabItemStyleOptions(),
             };
-            var attachedFileTab = new TabItemDefinition()
+            var attachedFileTab = new TabItemLayoutItem()
             {
                 Title = "Attached Files",
-                Content = new PrimitiveControlReference("081CBB52-2D26-4533-9DA8-2627BBCC7542", "SelectedRunSheetModel") { MaxHeight = 500, VerticalAlignment = eVerticalAlignment.Top },
-                HeaderFontSize = 12
+                Content = new PrimitiveControlReferenceDefinition("081CBB52-2D26-4533-9DA8-2627BBCC7542", "SelectedRunSheetModel") { MaxHeight = 500, VerticalAlignment = eVerticalAlignment.Top },
+                StyleOptions = GetTabItemStyleOptions(),
             };
 
-            var ambientMeasurementTab = new TabItemDefinition()
+            var ambientMeasurementTab = new TabItemLayoutItem()
             {
                 Title = "Ambient Measurements",
-                Content = new PrimitiveControlReference("D1DC10FF-2B59-48BE-AB8A-B38A3D9F4FCC", "SelectedRunSheetModel") { MaxHeight = 500, VerticalAlignment = eVerticalAlignment.Top },
-                HeaderFontSize = 12
+                Content = new PrimitiveControlReferenceDefinition("D1DC10FF-2B59-48BE-AB8A-B38A3D9F4FCC", "SelectedRunSheetModel") { MaxHeight = 500, VerticalAlignment = eVerticalAlignment.Top },
+                StyleOptions = GetTabItemStyleOptions(),
             };
 
             runsheetRightPanelTabControl.TabItems.Add(mainTab);
@@ -198,47 +220,47 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
             runsheetRightPanelTabControl.TabItems.Add(ambientMeasurementTab);
             runsheetRightPanelTabControl.Width = 500;
 
-            var leftPart = new GridLayoutDefinition(new List<RowDefinition>()
+            var leftPart = new GridLayoutItem(new List<HHRowDefinition>()
                                                     {
-                                                        new RowDefinition(GridLength.GridUnitType.Auto),
-                                                        new RowDefinition(GridLength.GridUnitType.Star),
-                                                        new RowDefinition(GridLength.GridUnitType.Auto),
-                                                        new RowDefinition(GridLength.GridUnitType.Star)
+                                                        new HHRowDefinition(eGridUnitType.Auto),
+                                                        new HHRowDefinition(eGridUnitType.Star),
+                                                        new HHRowDefinition(eGridUnitType.Auto),
+                                                        new HHRowDefinition(eGridUnitType.Star)
                                                     },
-                                                    new List<ColumnDefinition>()
+                                                    new List<HHColumnDefinition>()
                                                     {
-                                                        new ColumnDefinition(GridLength.GridUnitType.Star)
+                                                        new HHColumnDefinition(eGridUnitType.Star)
                                                     },
-                                                    new List<GridLayoutItemDefinition>()
+                                                    new List<GridItemDefinition>()
                                                     {
                                                         // RunSheet top bar
-                                                        new GridLayoutItemDefinition(0, 0, new ScrollViewerLayoutDefinition()
+                                                        new GridItemDefinition(0, 0, new ScrollViewerLayoutItem()
                                                         {
-                                                            LayoutDefinition = runSheetTopBar,
+                                                            Content = runSheetTopBar,
                                                             HorizontalScrollBarVisibility = eScrollBarVisibility.Auto,
                                                             VerticalScrollBarVisibility = eScrollBarVisibility.Disabled,
                                                         }),
-                                                        new GridLayoutItemDefinition(1, 0, lapTable),
+                                                        new GridItemDefinition(1, 0, lapTable),
                                                         // Grid Splitter 
-                                                        new GridLayoutItemDefinition(2,
+                                                        new GridItemDefinition(2,
                                                                                      0,
-                                                                                     new HHGridSplitter()
+                                                                                     new HHGridSplitterDefinition()
                                                                                      {
                                                                                          Orientation = eGridSplitterOrientation.Horizontal
                                                                                      }),
                                                         // Comments
-                                                        new GridLayoutItemDefinition(3, 0, commentsRows)
+                                                        new GridItemDefinition(3, 0, commentsRows)
                                                     })
             {
                 VerticalAlignment = eVerticalAlignment.Stretch,
                 MaxHeight = 5000,
             };
 
-            var rightPart = new StackLayoutDefinition(new List<object>()
+            var rightPart = new StackLayoutItem(eOrientation.Vertical, new List<object>()
             {
                 runsheetRightPanelTabControl,
                 // SetupOverview
-                new PrimitiveControlReference("D4D4547E-A238-47AE-B130-4BE6CB3323E0")
+                new PrimitiveControlReferenceDefinition("D4D4547E-A238-47AE-B130-4BE6CB3323E0")
                 {
                     VerticalAlignment = eVerticalAlignment.Top
                 }
@@ -250,14 +272,14 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
 
             if (isSetupInTab)
             {
-                var setupTab = new TabItemDefinition()
+                var setupTab = new TabItemLayoutItem()
                 {
                     Title = "Setup",
-                    Content = new PrimitiveControlReference("D4D4547E-A238-47AE-B130-4BE6CB3323E0") { VerticalAlignment = eVerticalAlignment.Top, HorizontalAlignment = eHorizontalAlignment.Left },
-                    HeaderFontSize = 12,
+                    Content = new PrimitiveControlReferenceDefinition("D4D4547E-A238-47AE-B130-4BE6CB3323E0") { VerticalAlignment = eVerticalAlignment.Top, HorizontalAlignment = eHorizontalAlignment.Left },
+                    StyleOptions = GetTabItemStyleOptions(),
                 };
                 runsheetRightPanelTabControl.TabItems.Add(setupTab);
-                rightPart = new StackLayoutDefinition(new List<object>()
+                rightPart = new StackLayoutItem(eOrientation.Vertical, new List<object>()
                 {
                     runsheetRightPanelTabControl
                 })
@@ -266,29 +288,29 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
                 };
             }
             return new CustomGridDefinition(
-                 new GridLayoutDefinition(new List<RowDefinition>()
+                 new GridLayoutItem(new List<HHRowDefinition>()
                 {
-                     new RowDefinition(GridLength.GridUnitType.Star)
+                     new HHRowDefinition(eGridUnitType.Star)
                 },
-                new List<ColumnDefinition>()
+                new List<HHColumnDefinition>()
                     {
-                        new ColumnDefinition(2, GridLength.GridUnitType.Star),
-                        new ColumnDefinition(GridLength.GridUnitType.Auto),
-                        new ColumnDefinition(GridLength.GridUnitType.Star)
+                        new HHColumnDefinition(2, eGridUnitType.Star),
+                        new HHColumnDefinition(eGridUnitType.Auto),
+                        new HHColumnDefinition(eGridUnitType.Star)
                     },
-                new List<GridLayoutItemDefinition>()
+                new List<GridItemDefinition>()
                     {
-                     new GridLayoutItemDefinition(0, 0,
+                     new GridItemDefinition(0, 0,
                      leftPart ),
-                    new GridLayoutItemDefinition(0,1,new HHGridSplitter()
+                    new GridItemDefinition(0,1,new HHGridSplitterDefinition()
                         {
                             Orientation = eGridSplitterOrientation.Vertical
                         }),
-                    new GridLayoutItemDefinition(0, 2, new ScrollViewerLayoutDefinition()
+                    new GridItemDefinition(0, 2, new ScrollViewerLayoutItem()
                     {
                         VerticalScrollBarVisibility = eScrollBarVisibility.Disabled,
                         HorizontalScrollBarVisibility = eScrollBarVisibility.Auto,
-                        LayoutDefinition = rightPart
+                        Content = rightPart
                     })
                 })
                 ,

@@ -4,9 +4,11 @@ using HHDev.Core.NETStandard.Graphing;
 using HHDev.Core.NETStandard.Helpers;
 using HHDev.Core.NETStandard.Logging;
 using HHDev.Core.NETStandard.Src;
+using HHDev.DataManagement.Client.Core;
 using HHDev.DataManagement.Client.Core.Definitions.HHColumnItemDisplay;
 using HHDev.DataManagement.Client.Core.Models.FlatModels;
 using HHDev.DataManagement.Client.Core.ViewModels;
+using HHDev.DataManagement.Client.Wpf.Services;
 using HHDev.DataManagement.Client.Wpf.ViewModels;
 using HHDev.DataManagement.Client.Wpf.ViewModels.Management.ColumnItemDefinitionEditor;
 using HHDev.DataManagement.Core;
@@ -119,7 +121,11 @@ namespace HHDev.HHDM.DesktopPlugin.Setup.SetupGraph
                 RefreshUserDefinedGraphs();
             }
         }
-        public SimulationResultsViewModel() : base(null)
+        public SimulationResultsViewModel(IEntitySelectionService entitySelectionService, 
+                                          IClientCoreContainer container)
+            : base(null, 
+                   entitySelectionService, 
+                   container)
         {
             DisplayName = "Simulation Results";
             PlotModel1 = InitializePlotModel("Array 2", "Array 2 [unit]", true, true);

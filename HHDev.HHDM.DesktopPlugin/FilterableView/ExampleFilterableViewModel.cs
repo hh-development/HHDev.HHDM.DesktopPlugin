@@ -1,5 +1,6 @@
 ﻿using HHDev.Core.NETStandard.Definitions;
 using HHDev.Core.NETStandard.Extensions;
+using HHDev.DataManagement.Client.Core;
 using HHDev.DataManagement.Client.Core.Caches;
 using HHDev.DataManagement.Client.Core.Components.CIDViewModels;
 using HHDev.DataManagement.Client.Core.Components.Filtering;
@@ -20,14 +21,14 @@ namespace HHDev.HHDM.DesktopPlugin.FilterableView
 {
     public class ExampleFilterableViewModel : BaseFilterableViewModel
     {
-        public ExampleFilterableViewModel() : base(new BaseFilterableViewModelOptions()
+        public ExampleFilterableViewModel(IClientCoreContainer container) : base(new BaseFilterableViewModelOptions()
         {
             CustomCarFiltering = false,     // if this is true then a view could be created to filter the cars (e.g. as done in the main graph)
-        }, "Event.Setups")
+        }, "Event.Setups", container)
         {
             CIDViewModelManager = new CIDViewModelManager<ISetupFlatModel>("Default",
                                                                            eCustomPropertyDefinitionType.Setup,
-                                                                           setup => new EditSetupSheetViewModel(setup, Id),
+                                                                           setup => new EditSetupSheetViewModel(setup, Id, null),
                                                                            editViewModel => ((EditSetupSheetViewModel)editViewModel).HandleCloseViewModel(),
                                                                            () => new ControlDefinition()
                                                                            {
