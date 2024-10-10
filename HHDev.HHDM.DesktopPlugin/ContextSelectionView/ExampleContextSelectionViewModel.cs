@@ -1,5 +1,6 @@
 ﻿using HHDev.Core.NETStandard.Enums;
 using HHDev.Core.NETStandard.Src;
+using HHDev.DataManagement.Client.Core;
 using HHDev.DataManagement.Client.Core.Caches;
 using HHDev.DataManagement.Client.Core.Models.FlatModels;
 using HHDev.DataManagement.Client.Core.ViewModels;
@@ -23,7 +24,10 @@ namespace HHDev.HHDM.DesktopPlugin.ContextSelectionView
             return "Context Selection";
         }
 
-        public ExampleContextSelectionViewModel() : base(new ContextCacheConfigOptionsV2(eContextDisplayMode.All, new FilterOptionsV2(eEventFilterLevelV2.Subscribed, eCarFilterLevelV2.Subscribed)), "Event.Runs")
+        public ExampleContextSelectionViewModel(IClientCoreContainer container)
+            : base(new ContextCacheConfigOptionsV2(eContextDisplayMode.All, new FilterOptionsV2(eEventFilterLevelV2.Subscribed, eCarFilterLevelV2.Subscribed)), 
+                   "Event.Runs", 
+                   container)
         {
             DoYourFunctionCommand = new DelegateCommand(DoYourFunction);
         }
