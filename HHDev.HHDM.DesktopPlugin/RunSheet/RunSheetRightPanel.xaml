@@ -1,8 +1,9 @@
-﻿<UserControl x:Class="HHDev.HHDM.DesktopPlugin.RunSheet.RunSheetRightPanel"
+﻿<primitives:PrimitiveControl x:Class="HHDev.HHDM.DesktopPlugin.RunSheet.RunSheetRightPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:primitives="clr-namespace:HHDev.DataManagement.Client.Wpf.Controls.HHCustomGridDisplay;assembly=HHDev.DataManagement.Client.Wpf"
              xmlns:local="clr-namespace:HHDev.HHDM.DesktopPlugin.RunSheet" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              xmlns:runsheetTabs="clr-namespace:HHDev.HHDM.DesktopPlugin.RunSheet.Tab" xmlns:hhcolumnitemdisplay="clr-namespace:HHDev.DataManagement.Client.Wpf.Controls.HHColumnItemDisplay;assembly=HHDev.DataManagement.Client.Wpf"
              mc:Ignorable="d" 
@@ -37,4 +38,4 @@
             </dx:DXTabItem>
         </dx:DXTabControl>
     </StackPanel>
-</UserControl>
+</primitives:PrimitiveControl>

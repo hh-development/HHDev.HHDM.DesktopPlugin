@@ -24,9 +24,9 @@ namespace HHDev.HHDM.DesktopPlugin
     public class PluginEntry :
         IHhDataManagementPlugin,
         ICustomFlatModelProviderPlugin,
-        IRunSheetCustomizationPlugin,
         IEventCarDataCustomizationPlugin,
-        ICustomizeUserInterfacePlugin
+        ICustomizeUserInterfacePlugin,
+        ICgdPrimitiveProviderPlugin
     {
         #region IHhDataManagementPlugin
         public string Name => "HHDev Plugin";//plugin Name
@@ -40,21 +40,6 @@ namespace HHDev.HHDM.DesktopPlugin
         {
             new FlatModelInitializationDefinition(eFlatModelTypes.Setup, "60d5a9b2-122a-42c2-a093-f9add1ec2bb4", typeof(HHDevSetupFlatModel))// Guid of the setup definition(can be found in Admin => Definition)
         };
-
-        #endregion
-
-        #region IRunSheetCustomizationPlugin
-        public List<KeyValuePair<Guid, RunSheetCustomizationConfig>> RunSheetCustomizationConfigs { get; } = new List<KeyValuePair<Guid, RunSheetCustomizationConfig>>()
-            {
-            new KeyValuePair<Guid, RunSheetCustomizationConfig>(Guid.Parse("07111622-0281-4085-8118-d82082f84007"),
-                                                        new RunSheetCustomizationConfig(new List<CompositeControlDefinition>(),
-                                                                                        RunSheetDefinitionBuilder.GetLayoutDefinition(),
-                                                                                        RunSheetDefinitionBuilder.GetPrimitiveDefinitions(),
-                                                                                        new List<StyleDefinition>(),
-                                                                                        null,null,null,null)),
-            
-
-            };
 
         #endregion
 
@@ -80,6 +65,13 @@ namespace HHDev.HHDM.DesktopPlugin
             retList.AddRange(customTabs);
             return retList;
         }
+        #endregion
+
+        #region ICgdPrimitiveProviderPlugin
+        public List<PrimitiveDefinition> PrimitiveDefinitions => new List<PrimitiveDefinition>()
+        {
+           new PrimitiveDefinition("D0C6E00A-D8C9-4A4B-9BB2-7AE7E77DE3DB", typeof(RunSheetRightPanel))
+        };
         #endregion
 
         #region ICustomizeUserInterfacePlugin

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HHDev.DataManagement.Client.Wpf.Controls.HHCustomGridDisplay;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
     /// <summary>
     /// Interaction logic for RunSheetRightPanel.xaml
     /// </summary>
-    public partial class RunSheetRightPanel : UserControl
+    public partial class RunSheetRightPanel : PrimitiveControl
     {
         public RunSheetRightPanel()
         {

@@ -20,7 +20,8 @@
           C:\Bitbucket\data-management-desktop\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\Debug\net5.0-windows;
       -->
       <!--START DATABASE SELECTOR GENERATED VALUES-->
-	  <!--END DATABASE SELECTOR GENERATED VALUES-->
+C:\bitbucket\data-management-desktop\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\Debug\net7.0-windows\win-x64;
+<!--END DATABASE SELECTOR GENERATED VALUES-->
 			$(AssemblySearchPaths);
 		</AssemblySearchPaths>
   </PropertyGroup>
@@ -221,6 +222,6 @@
     </None>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;C:\Users\YOUR USERNAME\AppData\Local\HH Development\HH Data Management\Plugins\PluginDev&quot; mkdir &quot;C:\Users\YOUR USERNAME\AppData\Local\HH Development\HH Data Management\Plugins\PluginDev&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;C:\Users\YOUR USERNAME\AppData\Local\HH Development\HH Data Management\Plugins\PluginDev&quot; /Y /S" />
+    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;C:\Users\C Caunedo\Documents\HH Development\HH Data Management\Database\Staging_8079_HHDev\Plugins\Plugin&quot; mkdir &quot;C:\Users\C Caunedo\Documents\HH Development\HH Data Management\Database\Staging_8079_HHDev\Plugins\Plugin&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;C:\Users\C Caunedo\Documents\HH Development\HH Data Management\Database\Staging_8079_HHDev\Plugins\Plugin&quot; /Y /S" />
   </Target>
 </Project>

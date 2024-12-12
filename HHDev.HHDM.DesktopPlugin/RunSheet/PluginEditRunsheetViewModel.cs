@@ -9,6 +9,7 @@ using HHDev.DataManagement.Client.Wpf.ViewModels;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,11 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
             OwnerId = ownerId;
             ChangeTrackingModels = TypeWrapperCreator<IChangeTrackingModel>.GetTypeWrapper(FlatModel.DefinitionId);
             ChangeTrackingModels.AddProperty(nameof(RunSheetFlatModel), changeTrackingModel);
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public IFlatModel FlatModel { get; }

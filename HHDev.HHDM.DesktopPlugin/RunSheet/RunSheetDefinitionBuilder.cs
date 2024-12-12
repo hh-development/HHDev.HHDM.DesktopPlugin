@@ -314,14 +314,7 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
                     })
                 })
                 ,
-                "SelectedRunSheetModel.RunSheetFlatModel");
+                "SelectedRunSheetModel.RunSheetFlatModel", "");
         };
-        public static List<PrimitiveDefinition> GetPrimitiveDefinitions()
-        {
-            return new List<PrimitiveDefinition>()
-            {
-                new PrimitiveDefinition("D0C6E00A-D8C9-4A4B-9BB2-7AE7E77DE3DB", typeof(RunSheetRightPanel))
-            };
-        }
     }
 }
