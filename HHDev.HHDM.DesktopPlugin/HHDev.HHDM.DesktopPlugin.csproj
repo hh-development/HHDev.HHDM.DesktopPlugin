@@ -206,6 +206,9 @@ C:\bitbucket\data-management-desktop\data-management\HHDev.DataManagement.Client
       <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\System.Drawing.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnitsNet">
+      <HintPath>..\..\..\Program Files\HH Development\HH Data Management\UnitsNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Fody" Version="6.8.0">

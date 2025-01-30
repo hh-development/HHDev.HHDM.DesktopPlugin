@@ -18,6 +18,9 @@ using HHDev.HHDM.DesktopPlugin.Setup.SetupGraph;
 using HHDev.DataManagement.Client.Core.PluginFramework.Interfaces;
 using HHDev.HHDM.DesktopPlugin.FilterableView;
 using HHDev.HHDM.DesktopPlugin.ContextSelectionView;
+using HHDev.DataManagement.Client.Core.Models;
+using HHDev.DataManagement.Client.Wpf.Views.Engineering;
+using HHDev.HHDM.DesktopPlugin.TyrePressure;
 
 namespace HHDev.HHDM.DesktopPlugin
 {
@@ -26,6 +29,7 @@ namespace HHDev.HHDM.DesktopPlugin
         ICustomFlatModelProviderPlugin,
         IEventCarDataCustomizationPlugin,
         ICustomizeUserInterfacePlugin,
+        IPressureCalculationCustomizationPlugin,
         ICgdPrimitiveProviderPlugin
     {
         #region IHhDataManagementPlugin
@@ -48,7 +52,7 @@ namespace HHDev.HHDM.DesktopPlugin
 
         public List<KeyValuePair<Guid, EventCarDataCustomizationConfig>> EventCarDataCustomizationConfigs { get; } = new List<KeyValuePair<Guid, EventCarDataCustomizationConfig>>()
             {
-            
+
 
                new KeyValuePair<Guid, EventCarDataCustomizationConfig>(
                                     Guid.Parse("4a1632e6-c322-445b-bc08-7c6512403345"),
@@ -116,6 +120,43 @@ namespace HHDev.HHDM.DesktopPlugin
         }
 
         #endregion
+
+        #region IPressureCalculationCustomizationPlugin
+
+        public IPressureCalculatorWindow GetNewTyrePressureCalculatorWindow(TyrePressureCalculatorWindowInitializationObject initObject)
+        {
+            return new CustomizeTyrePressureCalculatorWindow(initObject);
+        }
+
+        public IPressureCalculatorWindow GetNewTyrePressureAdjustmentCalculatorWindow(TyrePressureAdjustmentCalculatorWindowInitializationObject initObject)
+        {
+            return new CustomizeTyrePressureAdjustmentCalculatorWindow(initObject);
+        }
+
+        public bool AdjustReferencePresssureRun(ReferencePressureRunData runData, IRunSheetFlatModel runSheet)// customization of the Runsheet button "Add 
+        {
+            runData.FlColdPressure = (double?)runSheet.GetPropertyValue("FLColdPressure") ?? 0;
+            runData.FrColdPressure = (double?)runSheet.GetPropertyValue("FRColdPressure") ?? 0;
+            runData.RlColdPressure = (double?)runSheet.GetPropertyValue("RLColdPressure") ?? 0;
+            runData.RrColdPressure = (double?)runSheet.GetPropertyValue("RRColdPressure") ?? 0;
+            runData.FlHotPressure = (double?)runSheet.GetPropertyValue("FLHotPressure") ?? 0;
+            runData.FrHotPressure = (double?)runSheet.GetPropertyValue("FRHotPressure") ?? 0;
+            runData.RlHotPressure = (double?)runSheet.GetPropertyValue("RLHotPressure") ?? 0;
+            runData.RrHotPressure = (double?)runSheet.GetPropertyValue("RRHotPressure") ?? 0;
+            runData.SetAirTemperature = 20;
+            runData.HotAirTemperature = 20;
+            runData.HotTrackTemperature = 20;
+
+            return true;
+        }
+
+
+        public void AdjustReferencePresssureSetDown(ReferencePressureRunModel newReferenceRun, ITyreSetFlatModel tyreSet)
+        {
+
+        }
+        #endregion
+
 
         #region Constructor
 
