@@ -13,14 +13,15 @@
   <PropertyGroup>
     <RepoName>data-management-desktop</RepoName>
     <BuildSettingsAdditionalFolder>net7.0-windows\win-x64</BuildSettingsAdditionalFolder>
+    <Username>HHDev</Username>
     <AssemblySearchPaths>
       <!--You can add additional paths here for VS to search for dependencies when building.
           Note that the order of the entries defines the priority.
           For example:
-          C:\Bitbucket\data-management-desktop\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\Debug\net5.0-windows;
+          C:\Program Files\HH Development\HH Data Management;
       -->
       <!--START DATABASE SELECTOR GENERATED VALUES-->
-C:\bitbucket\data-management-desktop\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\Debug\net7.0-windows\win-x64;
+C:\Program Files\HH Development\HH Data Management;
 <!--END DATABASE SELECTOR GENERATED VALUES-->
 			$(AssemblySearchPaths);
 		</AssemblySearchPaths>
@@ -225,6 +226,6 @@ C:\bitbucket\data-management-desktop\data-management\HHDev.DataManagement.Client
     </None>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;C:\Users\C Caunedo\Documents\HH Development\HH Data Management\Database\Staging_8079_HHDev\Plugins\Plugin&quot; mkdir &quot;C:\Users\C Caunedo\Documents\HH Development\HH Data Management\Database\Staging_8079_HHDev\Plugins\Plugin&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;C:\Users\C Caunedo\Documents\HH Development\HH Data Management\Database\Staging_8079_HHDev\Plugins\Plugin&quot; /Y /S" />
+    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;C:\Users\$(Username)\Documents\HH Development\HH Data Management\Plugins\Plugin&quot; mkdir &quot;C:\Users\$(Username)\Documents\HH Development\HH Data Management\Plugins\Plugin&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;C:\Users\$(Username)\Documents\HH Development\HH Data Management\Plugins\Plugin&quot; /Y /S" />
   </Target>
 </Project>
