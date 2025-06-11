@@ -1,10 +1,4 @@
-﻿using HHDev.DataManagement.Client.Core.ViewModels.Engineering.TyreSets;
-using HHDev.DataManagement.Client.Wpf.Views.Engineering;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HHDev.DataManagement.Client.Wpf.Views.Engineering;
 using UnitsNet;
 
 namespace HHDev.HHDM.DesktopPlugin.TyrePressure
@@ -27,8 +21,6 @@ namespace HHDev.HHDM.DesktopPlugin.TyrePressure
                                                    Temperature expectedAirTemp,
                                                    Temperature expectedTrackTemp)
         {
-
-
             var bleedP = CustomizeTyrePressureCalculation.CalculatePressureAdjustment(targetHot,
                 referenceHot,
                 referenceCold,
@@ -44,8 +36,6 @@ namespace HHDev.HHDM.DesktopPlugin.TyrePressure
             }
 
             return CustomizeTyrePressureCalculation.GetPressureValueFromBarToUnit(_eventCarMasterCache, bleedP.Value);
-
-
         }
     }
 }

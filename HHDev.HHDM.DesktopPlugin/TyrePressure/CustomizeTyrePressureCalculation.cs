@@ -2,15 +2,17 @@
 using HHDev.DataManagement.Client.Core.Caches;
 using HHDev.DataManagement.Client.Core.Models;
 using HHDev.DataManagement.Client.Core.Models.FlatModels;
+using HHDev.DataManagement.Client.Core.ViewModels.Engineering.TyreSets;
 using HHDev.DataManagement.Core;
-using System;
-using System.Linq;
 using UnitsNet;
 
 namespace HHDev.HHDM.DesktopPlugin.TyrePressure
 {
     public static class CustomizeTyrePressureCalculation
     {
+        private const double CONSTANT1 = 95.6;
+        private const double CONSTANT2 = 0.8;
+
         public static double? CalculatePressureFromRef
             (Pressure targetP, Pressure refHotP, Pressure refP, Temperature refTyreT, Temperature refAirT, Temperature refTrackT, Temperature currTyreT, Temperature expectAirT, Temperature expectTrackT)
         {
