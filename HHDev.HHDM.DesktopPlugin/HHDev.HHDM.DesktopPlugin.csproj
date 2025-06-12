@@ -15,7 +15,7 @@
     <RepoName>data-management-desktop</RepoName>
     <DevExpressVersion>v23.2</DevExpressVersion>
     <BuildSettingsAdditionalFolder>$(TargetFramework)\win-x64</BuildSettingsAdditionalFolder>
-    <Username>HHDev</Username>
+    <Username>%USERNAME%</Username>
     <AssemblySearchPaths>
       <!--You can add additional paths here for VS to search for dependencies when building.
           Note that the order of the entries defines the priority.
