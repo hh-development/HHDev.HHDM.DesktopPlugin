@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>$(HHTargetFramework)-windows</TargetFramework>
     <UseWPF>true</UseWPF>
@@ -217,7 +217,7 @@
     <PackageReference Include="PropertyChanged.Fody">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-	<PackageReference Include="System.Drawing.Common" />
+    <PackageReference Include="System.Drawing.Common" />
   </ItemGroup>
   <ItemGroup>
     <None Update="PluginInfo.json">
@@ -225,6 +225,6 @@
     </None>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;C:\Users\$(Username)\Documents\HH Development\HH Data Management\Plugins\Plugin&quot; mkdir &quot;C:\Users\$(Username)\Documents\HH Development\HH Data Management\Plugins\Plugin&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;C:\Users\$(Username)\Documents\HH Development\HH Data Management\Plugins\Plugin&quot; /Y /S" />
+    <Exec Command="if $(ConfigurationName) == Debug if not exist &quot;C:\Users\$(Username)\Documents\HH Development\HH Data Management\Plugins\Plugin&quot; mkdir &quot;C:\Users\$(Username)\Documents\HH Development\HH Data Management\Plugins\Plugin&quot;&#xD;&#xA;if $(ConfigurationName) == Debug XCOPY &quot;$(TargetDir)&quot; &quot;C:\Users\$(Username)\Documents\HH Development\HH Data Management\Plugins\Plugin&quot; /Y /S /F" />
   </Target>
 </Project>
