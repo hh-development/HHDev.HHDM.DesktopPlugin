@@ -1,0 +1,10 @@
+﻿<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Fody" Version="6.9.2" />
+    <PackageVersion Include="PropertyChanged.Fody" Version="4.1.0" />
+	<PackageVersion Include="System.Drawing.Common" Version="9.0.4" />
+  </ItemGroup>
+</Project>

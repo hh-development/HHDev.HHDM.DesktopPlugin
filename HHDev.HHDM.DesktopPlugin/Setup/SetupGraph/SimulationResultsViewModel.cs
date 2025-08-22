@@ -1,30 +1,19 @@
-﻿using HHDev.Core.NETStandard.Definitions;
-using HHDev.Core.NETStandard.Extensions;
-using HHDev.Core.NETStandard.Graphing;
+﻿using HHDev.Core.NETStandard.Graphing;
 using HHDev.Core.NETStandard.Helpers;
 using HHDev.Core.NETStandard.Logging;
 using HHDev.Core.NETStandard.Src;
 using HHDev.DataManagement.Client.Core;
-using HHDev.DataManagement.Client.Core.Definitions.HHColumnItemDisplay;
-using HHDev.DataManagement.Client.Core.Models.FlatModels;
 using HHDev.DataManagement.Client.Core.ViewModels;
 using HHDev.DataManagement.Client.Wpf.Services;
 using HHDev.DataManagement.Client.Wpf.ViewModels;
-using HHDev.DataManagement.Client.Wpf.ViewModels.Management.ColumnItemDefinitionEditor;
-using HHDev.DataManagement.Core;
-using HHDev.DataManagement.Core.Entities;
 using NLog;
 using OxyPlot;
 using OxyPlot.Annotations;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml;
 using static HHDev.HHDM.DesktopPlugin.Setup.HHDevSetupFlatModel;
@@ -33,7 +22,7 @@ namespace HHDev.HHDM.DesktopPlugin.Setup.SetupGraph
 {
     public class SimulationResultsViewModel : WpfSetupComparisonViewModel
     {
-        protected static ExtendedLogger _logger = (ExtendedLogger)LogManager.GetCurrentClassLogger(typeof(ExtendedLogger));
+        protected static readonly ExtendedLogger _logger = LogManager.LogFactory.GetCurrentClassLogger<ExtendedLogger>();
         public ICommand RefreshGraphCommand { get; set; }
 
         private bool _isLoaded = false;
