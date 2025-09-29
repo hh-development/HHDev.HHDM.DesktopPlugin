@@ -8,8 +8,6 @@ using HHDev.DataManagement.Client.Wpf.Views;
 using HHDev.DataManagement.Client.Wpf.PluginFramework.CustomizationConfigs;
 using HHDev.DataManagement.Client.Core.Models.FlatModels;
 using HHDev.HHDM.DesktopPlugin.Setup;
-using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay.Styles;
-using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay;
 using HHDev.HHDM.DesktopPlugin.RunSheet;
 using HHDev.DataManagement.Client.Wpf.Components.TabControl;
 using HHDev.DataManagement.Client.Wpf.Helpers;
@@ -133,7 +131,7 @@ namespace HHDev.HHDM.DesktopPlugin
             return new CustomizeTyrePressureAdjustmentCalculatorWindow(initObject);
         }
 
-        public bool AdjustReferencePresssureRun(ReferencePressureRunData runData, IRunSheetFlatModel runSheet)// customization of the Runsheet button "Add 
+        public bool AdjustReferencePresssureRun(ReferencePressureRunData runData, IRunSheetFlatModel runSheet)// customization of the Runsheet button "Add"
         {
             runData.FlColdPressure = (double?)runSheet.GetPropertyValue("FLColdPressure") ?? 0;
             runData.FrColdPressure = (double?)runSheet.GetPropertyValue("FRColdPressure") ?? 0;
@@ -143,7 +141,10 @@ namespace HHDev.HHDM.DesktopPlugin
             runData.FrHotPressure = (double?)runSheet.GetPropertyValue("FRHotPressure") ?? 0;
             runData.RlHotPressure = (double?)runSheet.GetPropertyValue("RLHotPressure") ?? 0;
             runData.RrHotPressure = (double?)runSheet.GetPropertyValue("RRHotPressure") ?? 0;
-            runData.SetAirTemperature = 20;
+            runData.FLAirTemperature = 20;
+            runData.FRAirTemperature = 20;
+            runData.RLAirTemperature = 20;
+            runData.RRAirTemperature = 20;
             runData.HotAirTemperature = 20;
             runData.HotTrackTemperature = 20;
 

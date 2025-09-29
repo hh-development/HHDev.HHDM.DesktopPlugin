@@ -16,7 +16,7 @@ namespace HHDev.HHDM.DesktopPlugin.TyrePressure
         public static double? CalculatePressureFromRef
             (Pressure targetP, Pressure refHotP, Pressure refP, Temperature refTyreT, Temperature refAirT, Temperature refTrackT, Temperature currTyreT, Temperature expectAirT, Temperature expectTrackT)
         {
-            Temperature hotTireAirTerature = Temperature.FromKelvins(((refHotP.Bars * 100) + CONSTANT1) * (refTyreT.Kelvins) / ((refP.Bars * 100) + CONSTANT1));
+            Temperature hotTireAirTemperature = Temperature.FromKelvins(((refHotP.Bars * 100) + CONSTANT1) * (refTyreT.Kelvins) / ((refP.Bars * 100) + CONSTANT1));
             double percentTrack = 100;
             double percentAmbient = 100;
             if (expectTrackT.DegreesCelsius + expectAirT.DegreesCelsius != 0)
@@ -44,13 +44,14 @@ namespace HHDev.HHDM.DesktopPlugin.TyrePressure
             double targetVsrefRun = trackVsAmbient - trackVsAmbient2;
             Temperature targetVsrefRunCompensated = Temperature.FromDegreesCelsius(targetVsrefRun * CONSTANT2);
 
-            Temperature hotTireAirTeraturecompensated = Temperature.FromDegreesCelsius(hotTireAirTerature.DegreesCelsius + targetVsrefRunCompensated.DegreesCelsius);
-            if (hotTireAirTeraturecompensated.Kelvins == 0)
+            Temperature hotTireAirTemperatureCompensated = Temperature.FromDegreesCelsius(hotTireAirTemperature.DegreesCelsius + targetVsrefRunCompensated.DegreesCelsius);
+            if (hotTireAirTemperatureCompensated.Kelvins == 0)
             {
                 return null;
             }
-            var ColdPressureBar = ((((targetP.Bars * 100) + CONSTANT1) * (currTyreT.Kelvins) / (hotTireAirTeraturecompensated.Kelvins)) - CONSTANT1) / 100;
-            return ColdPressureBar;
+
+            var coldPressureBar = ((((targetP.Bars * 100) + CONSTANT1) * (currTyreT.Kelvins) / (hotTireAirTemperatureCompensated.Kelvins)) - CONSTANT1) / 100;
+            return coldPressureBar;
         }
 
         public static double? CalculatePressureAdjustment
@@ -67,9 +68,9 @@ namespace HHDev.HHDM.DesktopPlugin.TyrePressure
             {
                 return null;
             }
-            var TempNewPAtExpectT = CalculatePressureFromRef(targetP, refHotP, Pressure.FromBars(tempRefPAtcurrTyreT.Value), currTyreT, refAirT, refTrackT, currTyreT, expectAirT, expectTrackT);//Calcul Pressure @ actual Tyre Temp, New Target, New Track & Air T
+            var tempNewPAtExpectT = CalculatePressureFromRef(targetP, refHotP, Pressure.FromBars(tempRefPAtcurrTyreT.Value), currTyreT, refAirT, refTrackT, currTyreT, expectAirT, expectTrackT);//Calcul Pressure @ actual Tyre Temp, New Target, New Track & Air T
 
-            return TempNewPAtExpectT.Value - tempRefPAtcurrTyreT.Value;
+            return tempNewPAtExpectT.Value - tempRefPAtcurrTyreT.Value;
         }
 
         public static Temperature CalculateActualTemp(Pressure refHotP, Pressure refP, Temperature refTyreT)
@@ -85,7 +86,10 @@ namespace HHDev.HHDM.DesktopPlugin.TyrePressure
         public static void SetGenericValuesForReferencePressure(TyreSetPressureAdjustmentModel referencePressure,
                                                                 IEventCarDataFlatModel eventObject)
         {
-            referencePressure.ReferenceTemperature = eventObject.Doubles.GetPropertyValue("RefPressureTyreTemp");
+            referencePressure.FLRefTemp = eventObject.Doubles.GetPropertyValue("RefPressureTyreTemp");
+            referencePressure.FRRefTemp = eventObject.Doubles.GetPropertyValue("RefPressureTyreTemp");
+            referencePressure.RLRefTemp = eventObject.Doubles.GetPropertyValue("RefPressureTyreTemp");
+            referencePressure.RRRefTemp = eventObject.Doubles.GetPropertyValue("RefPressureTyreTemp");
 
             referencePressure.FLValue2 = eventObject.Doubles.GetPropertyValue("RefPressureTargetFL");
             referencePressure.FRValue2 = eventObject.Doubles.GetPropertyValue("RefPressureTargetFR");
@@ -97,8 +101,8 @@ namespace HHDev.HHDM.DesktopPlugin.TyrePressure
         }
 
         public static double? CalculateReferenceForColdHelper(string cornerString,
-                                                                IEventCarDataFlatModel eventObject,
-                                                                IBasicEntityFlatModel pressureAdjustment)
+                                                              IEventCarDataFlatModel eventObject,
+                                                              IBasicEntityFlatModel pressureAdjustment)
         {
             var refTarget = eventObject.Doubles.GetInternalPropertyValue($"RefPressureTarget{cornerString}");
             var refHotP = pressureAdjustment.Doubles.GetInternalPropertyValue($"{cornerString}Value2");
@@ -114,22 +118,22 @@ namespace HHDev.HHDM.DesktopPlugin.TyrePressure
             {
                 return null;
             }
-            return CalculatePressureFromRef(Pressure.FromBars(refTarget.Value),
-                                                                                      Pressure.FromBars(refHotP.Value),
-                                                                                       Pressure.FromBars(refColdP.Value),
-                                                                                       Temperature.FromDegreesCelsius(refTyreT.Value),
-                                                                                       Temperature.FromDegreesCelsius(refAirT.Value),
-                                                                                       Temperature.FromDegreesCelsius(refTrackT.Value),
-                                                                                       Temperature.FromDegreesCelsius(actualTyreT.Value),
-                                                                                       Temperature.FromDegreesCelsius(expectAirT.Value),
-                                                                                       Temperature.FromDegreesCelsius(expectTrackT.Value));
 
+            return CalculatePressureFromRef(Pressure.FromBars(refTarget.Value),
+                                            Pressure.FromBars(refHotP.Value),
+                                            Pressure.FromBars(refColdP.Value),
+                                            Temperature.FromDegreesCelsius(refTyreT.Value),
+                                            Temperature.FromDegreesCelsius(refAirT.Value),
+                                            Temperature.FromDegreesCelsius(refTrackT.Value),
+                                            Temperature.FromDegreesCelsius(actualTyreT.Value),
+                                            Temperature.FromDegreesCelsius(expectAirT.Value),
+                                            Temperature.FromDegreesCelsius(expectTrackT.Value));
         }
 
         public static double? CalculateReferenceForAdjustmentHelper(string cornerString,
-                                                                IEventCarDataFlatModel eventObject,
-                                                                IBasicEntityFlatModel pressureAdjustment,
-                                                                TyreSetPressureAdjustmentModel previousReference)
+                                                                    IEventCarDataFlatModel eventObject,
+                                                                    IBasicEntityFlatModel pressureAdjustment,
+                                                                    TyreSetPressureAdjustmentModel previousReference)
         {
             if (pressureAdjustment.Doubles.GetPropertyValue("ReferenceTemperature") == 0)
             {
@@ -162,24 +166,22 @@ namespace HHDev.HHDM.DesktopPlugin.TyrePressure
             }
 
 
-
             return CalculatePressureFromRef(Pressure.FromBars(refTarget.Value),
-                                                                 Pressure.FromBars(refHotP.Value),
-                                                                 referenceAdjustment1Pressure.ToUnit(UnitsNet.Units.PressureUnit.Bar),
-                                                                 Temperature.FromDegreesCelsius(actualTyreT.Value),
-                                                                 Temperature.FromDegreesCelsius(refAirT.Value),
-                                                                 Temperature.FromDegreesCelsius(refTrackT.Value),
-                                                                 Temperature.FromDegreesCelsius(actualTyreT.Value),
-                                                                 Temperature.FromDegreesCelsius(expectAirT.Value),
-                                                                 Temperature.FromDegreesCelsius(expectTrackT.Value));
-
+                                            Pressure.FromBars(refHotP.Value),
+                                            referenceAdjustment1Pressure.ToUnit(UnitsNet.Units.PressureUnit.Bar),
+                                            Temperature.FromDegreesCelsius(actualTyreT.Value),
+                                            Temperature.FromDegreesCelsius(refAirT.Value),
+                                            Temperature.FromDegreesCelsius(refTrackT.Value),
+                                            Temperature.FromDegreesCelsius(actualTyreT.Value),
+                                            Temperature.FromDegreesCelsius(expectAirT.Value),
+                                            Temperature.FromDegreesCelsius(expectTrackT.Value));
         }
 
         // NOTE: that for now this is the same as the CalculateReferenceForColdHelper function.  We could just reuse that calculation if that
         // does end up being the case
         public static double? CalculateReferenceForMeasurementHelper(string cornerString,
-                                                                IEventCarDataFlatModel eventObject,
-                                                                IBasicEntityFlatModel pressureAdjustment)
+                                                                     IEventCarDataFlatModel eventObject,
+                                                                     IBasicEntityFlatModel pressureAdjustment)
         {
             var refTarget = eventObject.Doubles.GetInternalPropertyValue($"RefPressureTarget{cornerString}");
             var refHotP = pressureAdjustment.Doubles.GetInternalPropertyValue($"{cornerString}Value2");
@@ -195,15 +197,16 @@ namespace HHDev.HHDM.DesktopPlugin.TyrePressure
             {
                 return null;
             }
+
             return CalculatePressureFromRef(Pressure.FromBars(refTarget.Value),
-                                                                                      Pressure.FromBars(refHotP.Value),
-                                                                                       Pressure.FromBars(refColdP.Value),
-                                                                                       Temperature.FromDegreesCelsius(refTyreT.Value),
-                                                                                       Temperature.FromDegreesCelsius(refAirT.Value),
-                                                                                       Temperature.FromDegreesCelsius(refTrackT.Value),
-                                                                                       Temperature.FromDegreesCelsius(actualTyreT.Value),
-                                                                                       Temperature.FromDegreesCelsius(expectAirT.Value),
-                                                                                       Temperature.FromDegreesCelsius(expectTrackT.Value));
+                                            Pressure.FromBars(refHotP.Value),
+                                            Pressure.FromBars(refColdP.Value),
+                                            Temperature.FromDegreesCelsius(refTyreT.Value),
+                                            Temperature.FromDegreesCelsius(refAirT.Value),
+                                            Temperature.FromDegreesCelsius(refTrackT.Value),
+                                            Temperature.FromDegreesCelsius(actualTyreT.Value),
+                                            Temperature.FromDegreesCelsius(expectAirT.Value),
+                                            Temperature.FromDegreesCelsius(expectTrackT.Value));
         }
 
         public static double? CalculateReferenceForRunSheetHelper(string cornerString,
@@ -243,33 +246,32 @@ namespace HHDev.HHDM.DesktopPlugin.TyrePressure
                                                                  Temperature.FromDegreesCelsius(expectAirT.Value),
                                                                  Temperature.FromDegreesCelsius(expectTrackT.Value));
         }
-        public static Pressure GetPressureWithUnit(IEventCarMasterCache _eventCarMasterCache, double value)
+        public static Pressure GetPressureWithUnit(IEventCarMasterCache eventCarMasterCache, double value)
         {
-            var defn = _eventCarMasterCache.ContextSelection.SelectedManagementCache.CustomPropertyDefinitionCache.GetCustomPropertyDefinition(eCustomPropertyDefinitionType.TyreSetPressureAdjustment);
+            var defn = eventCarMasterCache.ContextSelection.SelectedManagementCache.CustomPropertyDefinitionCache.GetCustomPropertyDefinition(eCustomPropertyDefinitionType.TyreSetPressureAdjustment);
             var unit = defn.CustomPropertyDescriptions.FirstOrDefault(x => x.Name == "FLValue").Unit;
             return Pressure.From(value, Pressure.ParseUnit(unit));
         }
 
-        public static Temperature GetTemperatureWithUnit(IEventCarMasterCache _eventCarMasterCache, double value)
+        public static Temperature GetTemperatureWithUnit(IEventCarMasterCache eventCarMasterCache, double value)
         {
-            var defn = _eventCarMasterCache.ContextSelection.SelectedManagementCache.CustomPropertyDefinitionCache.GetCustomPropertyDefinition(eCustomPropertyDefinitionType.TyreSetPressureAdjustment);
+            var defn = eventCarMasterCache.ContextSelection.SelectedManagementCache.CustomPropertyDefinitionCache.GetCustomPropertyDefinition(eCustomPropertyDefinitionType.TyreSetPressureAdjustment);
             var unit = defn.CustomPropertyDescriptions.FirstOrDefault(x => x.Name == "ReferenceTemperature").Unit;
             return Temperature.From(value, Temperature.ParseUnit(unit));
         }
 
-        public static double GetPressureValueFromBarToUnit(IEventCarMasterCache _eventCarMasterCache, double value)
+        public static double GetPressureValueFromBarToUnit(IEventCarMasterCache eventCarMasterCache, double value)
         {
-            var defn = _eventCarMasterCache.ContextSelection.SelectedManagementCache.CustomPropertyDefinitionCache.GetCustomPropertyDefinition(eCustomPropertyDefinitionType.TyreSetPressureAdjustment);
+            var defn = eventCarMasterCache.ContextSelection.SelectedManagementCache.CustomPropertyDefinitionCache.GetCustomPropertyDefinition(eCustomPropertyDefinitionType.TyreSetPressureAdjustment);
             var unit = defn.CustomPropertyDescriptions.FirstOrDefault(x => x.Name == "FLValue").Unit;
             return Pressure.From(value, Pressure.ParseUnit("bar")).ToUnit(Pressure.ParseUnit(unit)).Value;
         }
 
-        public static double GetTemperatureValueFromCelciusToUnit(IEventCarMasterCache _eventCarMasterCache, double value)
+        public static double GetTemperatureValueFromCelciusToUnit(IEventCarMasterCache eventCarMasterCache, double value)
         {
-            var defn = _eventCarMasterCache.ContextSelection.SelectedManagementCache.CustomPropertyDefinitionCache.GetCustomPropertyDefinition(eCustomPropertyDefinitionType.TyreSetPressureAdjustment);
+            var defn = eventCarMasterCache.ContextSelection.SelectedManagementCache.CustomPropertyDefinitionCache.GetCustomPropertyDefinition(eCustomPropertyDefinitionType.TyreSetPressureAdjustment);
             var unit = defn.CustomPropertyDescriptions.FirstOrDefault(x => x.Name == "ReferenceTemperature").Unit;
             return Temperature.From(value, Temperature.ParseUnit("\u00B0C")).ToUnit(Temperature.ParseUnit(unit)).Value;
         }
-
     }
 }
