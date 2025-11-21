@@ -33,6 +33,11 @@
       <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Data.v$(DevExpressVersion).dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DevExpress.Data.Desktop.v$(DevExpressVersion)">
+      <HintPath Condition="Exists('C:\Program Files\HH Development\HH Data Management')">C:\Program Files\HH Development\HH Data Management\DevExpress.Data.Desktop.v$(DevExpressVersion).dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.Data.Desktop.v$(DevExpressVersion).dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion)">
       <HintPath Condition="Exists('C:\Program Files\HH Development\HH Data Management')">C:\Program Files\HH Development\HH Data Management\DevExpress.DataAccess.v$(DevExpressVersion).dll</HintPath>
       <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\DevExpress.DataAccess.v$(DevExpressVersion).dll</HintPath>
