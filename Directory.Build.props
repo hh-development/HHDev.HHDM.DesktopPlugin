@@ -1,7 +1,7 @@
 <Project>
   <PropertyGroup>
     <HHTargetFramework>net9.0</HHTargetFramework>
-	<TargetFramework>$(HHTargetFramework)</TargetFramework>
+	<TargetFramework>$(HHTargetFramework)-windows</TargetFramework>
 	<DevExpressVersion>24.2</DevExpressVersion>
     <Nullable>disable</Nullable>
 	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
