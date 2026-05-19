@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 using System.Reflection;
+using System.Windows.Input;
+using HHDev.Core.NETStandard.Src;
 
 namespace HHDev.HHDM.DesktopPlugin.Setup
 {
     public class HHDevSetupFlatModel : SetupFlatModel
     {
+        public ICommand FlatModelButtonCommand { get; set; }
         public HHDevSetupFlatModel(SetupFlatModelInitializationObject initializationObject, TypeWrapperInitializationContainerWithParts typeWrapperInitializationContainer) : base(initializationObject, typeWrapperInitializationContainer)
         {
             var flatModelMathFunctionCaller = new FlatModelMathFunctionCaller(this);
@@ -19,10 +22,15 @@ namespace HHDev.HHDM.DesktopPlugin.Setup
                 new string[] { "RideHeightFL", "RideHeightFR", "RideHeightRL", "RideHeightRR", "Chassis" },//input parameters
                 UpdateRakeCalculation, //Function called
                 new string[] { nameof(RakeAngle) });// parameter updated
-
+            FlatModelButtonCommand = new DelegateCommand(FlatmodelButtonCode);
             this.PropertyChanged += HHDevRunSheetFlatModel_PropertyChanged;
             this.Maths.PropertyChanged += Maths_PropertyChanged;
             InitializeSimulationValues();
+        }
+
+        private void FlatmodelButtonCode(object obj)
+        {
+            // code called when the button in the UI is clicked.
         }
 
         public List<string> _parametersToUpdateSimulation = new List<string>()
