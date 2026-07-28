@@ -1,7 +1,7 @@
 ﻿using DevExpress.Xpf.Bars;
 using DevExpress.Xpf.Ribbon;
 using HHDev.Core.WPF.Layout;
-using HHDev.DataManagement.Client.Wpf.Controls.Ribbon;
+using HHDev.Core.WPF.Controls.Ribbon;
 using HHDev.DataManagement.Client.Wpf.Views;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace HHDev.HHDM.DesktopPlugin.FilterableView
     /// <summary>
     /// Interaction logic for ExampleFilterableView.xaml
     /// </summary>
-    public partial class ExampleFilterableView : BaseView
+    public partial class ExampleFilterableView : HHDMBaseView
     {
         public ExampleFilterableView()
         {

@@ -37,12 +37,12 @@ namespace HHDev.HHDM.DesktopPlugin.RunSheet
         public Guid OwnerId { get; }
         public ITypeWrapper<IChangeTrackingModel> ChangeTrackingModels { get; }
 
-        public string FlatModelId => FlatModel.Id;
-
         public void HandleCloseViewModel()
         {
             
         }
+
+        public string ModelId => FlatModel?.Id;
     }
     public class PluginEditRunsheetViewModel : WpfEditRunSheetViewModel
     {

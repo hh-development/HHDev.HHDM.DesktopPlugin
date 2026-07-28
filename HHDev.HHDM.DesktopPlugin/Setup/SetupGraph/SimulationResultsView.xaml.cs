@@ -1,7 +1,7 @@
 ﻿using DevExpress.Xpf.Bars;
 using DevExpress.Xpf.Ribbon;
 using HHDev.Core.WPF.Layout;
-using HHDev.DataManagement.Client.Wpf.Controls.Ribbon;
+using HHDev.Core.WPF.Controls.Ribbon;
 using HHDev.DataManagement.Client.Wpf.Views;
 using HHDev.DataManagement.Core;
 using System;
@@ -18,13 +18,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HHDev.Core.Enums;
 
 namespace HHDev.HHDM.DesktopPlugin.Setup.SetupGraph
 {
     /// <summary>
     /// Interaction logic for SimulationResultsView.xaml
     /// </summary>
-    public partial class SimulationResultsView : BaseView, ILayoutDocument
+    public partial class SimulationResultsView : HHDMBaseView, ILayoutDocument
     {
         private bool _isSetupCollapsed = false;
         private GridLength _originalGridLength;
@@ -35,9 +36,9 @@ namespace HHDev.HHDM.DesktopPlugin.Setup.SetupGraph
 
         protected override IEnumerable<object> BuildRibbonPageGroups()
         {
-            var itemManagementGroup = new HHDMRibbonPageGroup(eUiElementPermissionLevel.Read);
+            var itemManagementGroup = new HHRibbonPageGroup(eUiElementPermissionLevel.Read);
             itemManagementGroup.Caption = "Items";
-            var graphGroup = new HHDMRibbonPageGroup(eUiElementPermissionLevel.None);
+            var graphGroup = new HHRibbonPageGroup(eUiElementPermissionLevel.None);
             graphGroup.Caption = "Graphs";
 
             var addSetupButton = new BarButtonItem() { Content = "Add Setup", Focusable = true };

@@ -19,7 +19,7 @@ namespace HHDev.HHDM.DesktopPlugin.ContextSelectionView
     /// <summary>
     /// Interaction logic for ExampleContextSelectionView.xaml
     /// </summary>
-    public partial class ExampleContextSelectionView : BaseView
+    public partial class ExampleContextSelectionView : HHDMBaseView
     {
         public ExampleContextSelectionView()
         {

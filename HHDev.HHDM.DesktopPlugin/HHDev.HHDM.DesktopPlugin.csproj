@@ -147,6 +147,11 @@
       <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\HHDev.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="HHDev.Core.Windows">
+      <HintPath Condition="Exists('C:\Program Files\HH Development\HH Data Management')">C:\Program Files\HH Development\HH Data Management\HHDev.Core.Windows.dll</HintPath>
+      <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\HHDev.Core.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="HHDev.Core.WPF">
       <HintPath Condition="Exists('C:\Program Files\HH Development\HH Data Management')">C:\Program Files\HH Development\HH Data Management\HHDev.Core.WPF.dll</HintPath>
       <HintPath Condition="Exists('..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)')">..\..\$(RepoName)\data-management\HHDev.DataManagement.Client.HHDataManagement\bin\$(Configuration)\$(BuildSettingsAdditionalFolder)\HHDev.Core.WPF.dll</HintPath>

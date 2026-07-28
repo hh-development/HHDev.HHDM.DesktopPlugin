@@ -3,13 +3,14 @@ using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay;
 using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay.GridLayout;
 using HHDev.DataManagement.Client.Core.Definitions.HHCustomGridDisplay.Properties;
 using HHDev.DataManagement.Client.Wpf.Controls;
-using HHDev.DataManagement.Client.Wpf.Helpers;
 using HHDev.DataManagement.Client.Wpf.PluginFramework.CustomizationConfigs;
 using HHDev.DataManagement.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using HHDev.Core.Enums;
+using HHDev.Core.WPF.Helpers;
 
 namespace HHDev.HHDM.DesktopPlugin.RunSheet
 {

@@ -1,9 +1,9 @@
 ﻿using HHDev.DataManagement.Client.Wpf.PluginFramework.Interfaces;
 using System;
 using System.Collections.Generic;
-using HHDev.Core.NETFramework.Models;
+using HHDev.Core.Windows.Models;
 using HHDev.Core.WPF.Layout;
-using HHDev.DataManagement.Client.Wpf.Layout;
+using HHDev.Core.WPF.Plugins;
 using HHDev.DataManagement.Client.Wpf.Views;
 using HHDev.DataManagement.Client.Wpf.PluginFramework.CustomizationConfigs;
 using HHDev.DataManagement.Client.Core.Models.FlatModels;
@@ -103,10 +103,9 @@ namespace HHDev.HHDM.DesktopPlugin
 
         private void BuildMainRibbonTab() // add a tab in the ribbon bar and then some button in the new tab
         {
-            var tab = new HHDMRibbonPageModel("Plugin Tabs");
+            var tab = new HHRibbonPageModel("Plugin Tabs");
             RibbonPages.Add(tab);
-
-
+            
             var group = new RibbonPageGroupModel("Setups");
             tab.Groups.Add(group);
             group.Children.Add(new OpenViewRibbonButtonModel("Setup Graphs", "info", typeof(SimulationResultsView), null));

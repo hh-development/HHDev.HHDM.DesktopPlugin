@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              xmlns:local="clr-namespace:HHDev.HHDM.DesktopPlugin.RunSheet.Tab" 
-             xmlns:controls="clr-namespace:HHDev.DataManagement.Client.Wpf.Controls;assembly=HHDev.DataManagement.Client.Wpf" xmlns:wpf="clr-namespace:HHDev.Core.WPF;assembly=HHDev.Core.WPF" xmlns:runSheets="clr-namespace:HHDev.DataManagement.Client.Wpf.Controls.RunSheets;assembly=HHDev.DataManagement.Client.Wpf"
+             xmlns:controls="clr-namespace:HHDev.Core.WPF.Controls;assembly=HHDev.Core.WPF"
+             xmlns:wpf="clr-namespace:HHDev.Core.WPF;assembly=HHDev.Core.WPF"
+             xmlns:runSheets="clr-namespace:HHDev.DataManagement.Client.Wpf.Controls.RunSheets;assembly=HHDev.DataManagement.Client.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>

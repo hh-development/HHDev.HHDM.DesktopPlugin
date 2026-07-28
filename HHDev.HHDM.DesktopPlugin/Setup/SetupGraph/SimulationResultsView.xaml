@@ -1,4 +1,4 @@
-﻿<pluginframework:BaseView x:Class="HHDev.HHDM.DesktopPlugin.Setup.SetupGraph.SimulationResultsView"
+﻿<pluginframework:HHDMBaseView x:Class="HHDev.HHDM.DesktopPlugin.Setup.SetupGraph.SimulationResultsView"
              xmlns:pluginframework="clr-namespace:HHDev.DataManagement.Client.Wpf.Views;assembly=HHDev.DataManagement.Client.Wpf"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -39,4 +39,4 @@
             </DockPanel>
         </Grid>
     </DockPanel>
-</pluginframework:BaseView>
+</pluginframework:HHDMBaseView>

@@ -1,11 +1,11 @@
-﻿<views:BaseView x:Class="HHDev.HHDM.DesktopPlugin.FilterableView.ExampleFilterableView"
+﻿<views:HHDMBaseView x:Class="HHDev.HHDM.DesktopPlugin.FilterableView.ExampleFilterableView"
                 xmlns:views="clr-namespace:HHDev.DataManagement.Client.Wpf.Views;assembly=HHDev.DataManagement.Client.Wpf"
                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                 xmlns:local="clr-namespace:HHDev.HHDM.DesktopPlugin.FilterableView" 
-                xmlns:controls="clr-namespace:HHDev.DataManagement.Client.Wpf.Controls;assembly=HHDev.DataManagement.Client.Wpf" 
+                xmlns:controls="clr-namespace:HHDev.Core.WPF.Controls;assembly=HHDev.Core.WPF"
                 xmlns:analysis="clr-namespace:HHDev.DataManagement.Client.Wpf.Views.Engineering.Analysis;assembly=HHDev.DataManagement.Client.Wpf"
                 xmlns:hhcolumnitemdisplay="clr-namespace:HHDev.DataManagement.Client.Wpf.Controls.HHColumnItemDisplay;assembly=HHDev.DataManagement.Client.Wpf"
                 mc:Ignorable="d" 
@@ -34,4 +34,4 @@
         <controls:HHGridSplitter Grid.Row="0" Grid.Column="1" Orientation="Vertical" />
         <analysis:DataFilterSideBar Grid.Column="2"/>
     </Grid>
-</views:BaseView>
+</views:HHDMBaseView>
